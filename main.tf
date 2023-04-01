@@ -18,7 +18,7 @@ resource "aws_default_vpc" "defaultvpc" {
 
 resource "aws_key_pair" "demo" {
 
-  key_name = "demo"
+  key_name   = "demo"
   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCpwn5X7F5TEP/jnIyhkpUlopnsg7dxidQv1mfQU4tL9ZVQtzRnge2eB1BoBPj1igKcmeYdZX3zz+gkBAsakWDYCzdT4QDEaFYzqSS8v8er39bxu3QIfuDi441YrzJQyAzrs4d12aEEA9Lsx0HZiNe+DFNfm441yP02k9n11Evlqt2RO76r1kESvCA/A1s4QcxY3sQ0zOCZUBWFPWnbvEIQ4QBmBpVqO/+p3ZhI9xiARVW02X13M07ScLye3Coj47emDWFo3rZPGa9n9NTRNSBwl4ZGvKP19BtrPl+HdqgCqWWv2c8RnQtnU3Nnl45YKHuJZu/Elus5CSTMuCqo/2V6cQUvdn8L9iMRmiMiypesjhtpF1fnGdII4ZYwI05seu9iVEpYU7t7gxtyxzLPkQlN6PHVswx3rqJcq4itaSpbGPAeBnriMLqePowtII6SStm7etAZST68vbMMpylbeC2xuhNfkf/HU2GkYiEZ+Bx1E1bs05gk1vAdIRbkhEeNclE= root@ip-172-31-90-126"
 
 }
@@ -70,13 +70,17 @@ resource "aws_instance" "K8Manager" {
       "hostname"
     ]
   }
-
+  provisioner "remote-exec" {
+    inline = [
+      "echo ${aws_key_pair.demo.public_key} >> ~/.ssh/authorized_keys"
+    ]
+  }
   provisioner "local-exec" {
     command = "sudo chmod 400 demo.pem"
   }
 
   provisioner "local-exec" {
-    command = "echo ${self.public_ip} > myhosts"
+    command = "echo ${self.public_ip} >> myhosts"
   }
 
 }
@@ -104,7 +108,11 @@ resource "aws_instance" "Worker" {
       "hostname"
     ]
   }
-
+  provisioner "remote-exec" {
+    inline = [
+      "echo ${aws_key_pair.demo.public_key} >> ~/.ssh/authorized_keys"
+    ]
+  }
 
   provisioner "local-exec" {
     command = "sudo chmod 400 demo.pem"
@@ -112,7 +120,7 @@ resource "aws_instance" "Worker" {
 
 
   provisioner "local-exec" {
-    command = "echo ${self.public_ip} > myhosts"
+    command = "echo ${self.public_ip} >> myhosts"
   }
 
 }
