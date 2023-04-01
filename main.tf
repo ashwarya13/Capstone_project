@@ -47,15 +47,15 @@ resource "aws_security_group" "demoaccess" {
   }
 }
 
-resource "aws_instance" "K8Manager" {
+resource "aws_instance" "Kube_master" {
   ami                         = local.ami_id
-  instance_type               = "t2.micro"
+  instance_type               = "t2.medium"
   associate_public_ip_address = "true"
   vpc_security_group_ids      = [aws_security_group.demoaccess.id]
   key_name                    = aws_key_pair.demo.key_name
 
   tags = {
-    Name = "Worker 1"
+    Name = "Kube-master"
   }
   connection {
     type        = "ssh"
@@ -78,7 +78,11 @@ resource "aws_instance" "K8Manager" {
   provisioner "local-exec" {
     command = "sudo chmod 400 demo.pem"
   }
-
+  provisioner "remote-exec" {
+    inline = [
+      "sudo hostnamectl set-hostname worker"
+    ]
+  }
   provisioner "local-exec" {
     command = "echo ${self.public_ip} >> myhosts"
   }
@@ -87,13 +91,13 @@ resource "aws_instance" "K8Manager" {
 
 resource "aws_instance" "Worker" {
   ami                         = local.ami_id
-  instance_type               = "t2.micro"
+  instance_type               = "t2.medium"
   associate_public_ip_address = "true"
   vpc_security_group_ids      = [aws_security_group.demoaccess.id]
   key_name                    = aws_key_pair.demo.key_name
 
   tags = {
-    Name = "Worker2"
+    Name = "Worker"
   }
   connection {
     type        = "ssh"
@@ -113,7 +117,11 @@ resource "aws_instance" "Worker" {
       "echo ${aws_key_pair.demo.public_key} >> ~/.ssh/authorized_keys"
     ]
   }
-
+  provisioner "remote-exec" {
+    inline = [
+      "sudo hostnamectl set-hostname worker"
+    ]
+  }
   provisioner "local-exec" {
     command = "sudo chmod 400 demo.pem"
   }
