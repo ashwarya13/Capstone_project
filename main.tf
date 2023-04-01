@@ -23,6 +23,9 @@ resource "aws_key_pair" "demo" {
 
 }
 
+data "aws_subnet_ids" "selected" {
+  vpc_id = resource.aws_default_vpc.defaultvpc.id
+}
 resource "aws_security_group" "demoaccess" {
   name   = "demoaccess"
   vpc_id = local.vpc_id
@@ -53,7 +56,7 @@ resource "aws_instance" "Kube_master" {
   associate_public_ip_address = "true"
   vpc_security_group_ids      = [aws_security_group.demoaccess.id]
   key_name                    = aws_key_pair.demo.key_name
-
+   subnet_id     = element(tolist(data.aws_subnet_ids.selected.ids), 0)
   tags = {
     Name = "Kube-master"
   }
@@ -64,7 +67,9 @@ resource "aws_instance" "Kube_master" {
     private_key = file(local.private_key_path)
     timeout     = "4m"
   }
-
+provisioner "local-exec" {
+    command = "> myhosts"
+  }
   provisioner "remote-exec" {
     inline = [
       "hostname"
@@ -95,7 +100,7 @@ resource "aws_instance" "Worker" {
   associate_public_ip_address = "true"
   vpc_security_group_ids      = [aws_security_group.demoaccess.id]
   key_name                    = aws_key_pair.demo.key_name
-
+   subnet_id     = element(tolist(data.aws_subnet_ids.selected.ids), 0)
   tags = {
     Name = "Worker"
   }
@@ -106,7 +111,7 @@ resource "aws_instance" "Worker" {
     private_key = file(local.private_key_path)
     timeout     = "4m"
   }
-
+  
   provisioner "remote-exec" {
     inline = [
       "hostname"
