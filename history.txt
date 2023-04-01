@@ -1,0 +1,246 @@
+    1  sudo snap install terraform –classic
+    2  sudo apt install ansible
+    3  terrafrom
+    4  terraform
+    5  alias t=terraform
+    6  t
+    7  sudo snap install terraform –classic
+    8  sudo snap install terraform –-classic
+    9  sudo snap install terraform 
+   10  sudo snap install terraform --classic
+   11  sudo apt install awscli
+   12  ssh keygen
+   13  ssh-keygen
+   14  mkdir Capstone_project
+   15  cp ~/.ssh/id_rsa.pub Capstone_project/demo.pem
+   16  cat ~/.ssh/id_rsa
+   17  cat ~/.ssh/id_rsa.pub 
+   18  cp ~/.ssh/id_rsa Capstone_project/demo.pem
+   19  cat Capstone_project/demo.pem 
+   20  cd Capstone_project/
+   21  ls
+   22  mkdir infra
+   23  vi main.tf
+   24  aws configure
+   25  aws list s3
+   26  terraform init 
+   27  terraform format
+   28  terraform fmt
+   29  terraform plan
+   30  terraform apply 
+   31  ssh -i "demo.pem" ubuntu@ec2-44-211-159-74.compute-1.amazonaws.com
+   32  ls -ltrah 
+   33  ls
+   34  chmod 400 demp.pem
+   35  chmod 400 demo.pem
+   36  ssh -i "demo.pem" ubuntu@ec2-44-211-159-74.compute-1.amazonaws.com
+   37  terraform destroy 
+   38  vi main.tf 
+   39  cat ~/.ssh/id_rsa.pub 
+   40  vi main.tf 
+   41  t apply 
+   42  cd ..
+   43  git init 
+   44  ls
+   45  rm .git/
+   46  rm -ef .git/
+   47  rm -rf .git/
+   48  cd Capstone_project/
+   49  git init 
+   50  git add *
+   51  git status 
+   52  ls
+   53  git commit -am "Initial infra commit"
+   54  git congif --global --edit
+   55  git config --global --edit
+   56  git commit -am "Initial infra commit"
+   57  rm -rf .git
+   58  git config --global init.defaultBranch main
+   59  git init 
+   60  git add 
+   61  git add *
+   62  git status 
+   63  git commit -am "Initial infra commit"
+   64  git remote add origin https://github.com/ashwarya13/Capstone_project.git
+   65  git remote -v 
+   66  git push 
+   67  git status
+   68  git branch 
+   69  git push --set-upstream origin main 
+   70  git push --set-upstream origin master
+   71  git clone https://github.com/digitalvarys/kube-ansible
+   72  ls
+   73  cd kube-ansible/
+   74  ls
+   75  cd kube-ansible/
+   76  ls
+   77  vi hosts 
+   78  cat ../Capstone_project/myhosts 
+   79  vi hosts 
+   80  cat non-root-user.yml 
+   81  ansible-playbook non-root-user.yml 
+   82  ansible-playbook -i hosts non-root-user.yml 
+   83  cat /etc/ansible/ansible.cfg 
+   84  vi /etc/ansible/ansible.cfg 
+   85  ansible-playbook -i hosts non-root-user.yml 
+   86  vi non-root-user.yml 
+   87  cd ../Capstone_project/
+   88  ls
+   89  terraform destroy 
+   90  ls
+   91  cd infra/
+   92  ls
+   93  vi main.tf
+   94  cd ..
+   95  vi main.tf 
+   96  terraform fmt
+   97  terraform apply
+   98  cd ..
+   99  cd Capstone_project/
+  100  cat myhosts 
+  101  cd ../kube-ansible/
+  102  vi hosts
+  103  ansible -m ping -i hosts 
+  104  ansible -m ping -i hosts -a
+  105  ansible -i hosts --list-hosts
+  106  ansible --i hosts --list-hosts
+  107  ansible --inventory-file hosts --list-hosts
+  108  ls
+  109  ansible -i hosts -m ping 
+  110  ansible all -m ping 
+  111  ansible all -m ping -i hosts 
+  112  ansible all -a "hostname" -i hosts 
+  113  ansible all -a "ip -a" -i hosts 
+  114  ansible all -a "ip a" -i hosts 
+  115  ls
+  116  cd ~/.ssh/
+  117  ls
+  118  echo id_rsa.pub >> authorized_keys 
+  119  echo id_rsa.pub >> authorized_keys cd ~
+  120  cd ~
+  121  cd kube-ansible/
+  122  ansible all -a "ip a" -i hosts 
+  123  vi hosts 
+  124  ansible all -a "ip a" -i hosts 
+  125  vi hosts 
+  126  ifconfig
+  127  ip 
+  128  ip a
+  129  cd ~
+  130  pwd
+  131  cd /home/ubuntu/
+  132  ls .ssh/
+  133  cd .ssh/
+  134  echo ~/.ssh/id_rsa.pub 
+  135  echo $(~/.ssh/id_rsa.pub)
+  136  echo cat (~/.ssh/id_rsa.pub)
+  137  echo cat ~/.ssh/id_rsa.pub
+  138  echo $(~/.ssh/id_rsa.pub)
+  139  echo $(cat ~/.ssh/id_rsa.pub)
+  140  echo $(cat ~/.ssh/id_rsa.pub) >> authorized_keys 
+  141  cd ~
+  142  ls
+  143  cd kube-ansible/
+  144  ansible all -m ping -i hosts 
+  145  cp hosts ../Capstone_project/
+  146  ls
+  147  cd ../Capstone_project/
+  148  git add *
+  149  git push 
+  150  git status
+  151  git commit -am "update main.tf to include passwordless ssh for ansible processing"
+  152  git push 
+  153  cd ../
+  154  ls
+  155  cd kube-ansible/
+  156  ls
+  157  vi hosts 
+  158  ansible-playbook -i hosts kube-dependencies.yml 
+  159  vi kube-dependencies.yml 
+  160  ansible-playbook -i hosts kube-dependencies.yml 
+  161  vi kube-dependencies.yml 
+  162  ansible-playbook -i hosts kube-dependencies.yml 
+  163  vi kube-dependencies.yml 
+  164  ansible-playbook -i hosts kube-dependencies.yml 
+  165  Ericsosn@123
+  166  cd Capstone_project/
+  167  cd ../kube-ansible/
+  168  ansible-playbook -i hosts ~/kube-ansible/master-cluster.yml
+  169  cat hosts 
+  170  vi master-cluster.yml 
+  171  ansible-playbook -i hosts ~/kube-ansible/master-cluster.yml
+  172  vi master-cluster.yml 
+  173  ansible-playbook -i hosts ~/kube-ansible/master-cluster.yml
+  174  cat hosts
+  175  ssh ubuntu@--ignore-preflight-errors
+  176  ssh ubuntu@35.172.119.105
+  177  cd ../Capstone_project/
+  178  terraform destroy
+  179  vi main.tf 
+  180  terraform fmt
+  181  terraform apply
+  182  t destroy
+  183  terraform destroy
+  184  vi main.tf 
+  185  terraform apply
+  186  git push 
+  187  git add * && git commit -am"update instancetype to the ones with 2 cpus"
+  188  git push
+  189  vi mff
+  190  git add * && git commit -am " add a file"
+  191  git push 
+  192  ls
+  193  cd ../kube-ansible/
+  194  ls
+  195  ansible-playbook -i hosts kube-dependencies.yml 
+  196  cat ../Capstone_project/myhosts 
+  197  vi hosts
+  198  vi hosts 
+  199  ansible-playbook -i hosts kube-dependencies.yml 
+  200  ansible-playbook -i hosts ~/kube-ansible/master-cluster.yml
+  201  ansible masters -a "kubectl get nodes" -i hosts 
+  202  cd ../Capstone_project/
+  203  terraform destroy
+  204  vi main.tf 
+  205  git add * && git commit -am "update maintf control plane hostname error"
+  206  git push 
+  207  terraform apply 
+  208  cd ../kube-ansible/
+  209  ansible-playbook -i hosts kube-dependencies.yml 
+  210  cat ../Capstone_project/myhosts 
+  211  vi hosts 
+  212  ansible-playbook -i hosts kube-dependencies.yml 
+  213  ansible-playbook -i hosts ~/kube-ansible/master-cluster.yml
+  214  cat master-cluster.yml 
+  215  ansible masters -a "kubectl get nodes" -i hosts 
+  216  cd kube-ansible/
+  217  ansible-playbook -i hosts ~/kube-ansible/workers-cluster.yml 
+  218  ansible masters -a "kubectl get nodes" -i hosts 
+  219  ansible-playbook -i hosts ~/kube-ansible/workers-cluster.yml 
+  220  ansible masters -a "kubectl get nodes" -i hosts 
+  221  ansible all-a "kubectl get nodes" -i hosts 
+  222  ansible all -a "kubectl get nodes" -i hosts 
+  223  ansible masters -a "kubectl get nodes" -i hosts 
+  224  ansible-playbook -i hosts ~/kube-ansible/workers-cluster.yml 
+  225  ansible masters -a "kubectl get nodes" -i hosts 
+  226  ansible masters -a "kubectl get nodes" -i hosts  -v 
+  227  ansible-playbook -i hosts ~/kube-ansible/workers-cluster.yml -v
+  228  ansible workers -a "rm node_joined.txt" -i hosts  -v 
+  229  ansible workers -a "rm /home/ubuntu/node_joined.txt" -i hosts  -v 
+  230  ansible workers -a "cd / && find . -name node_joined.txt" -i hosts  -v 
+  231  ansible workers -a "cd /\ && find . -name node_joined.txt" -i hosts  -v 
+  232  ansible workers -a "find . -name node_joined.txt" -i hosts  -v 
+  233  ansible workers -a "pwd" -i hosts  -v 
+  234  ansible workers -a "cd /" -i hosts  -v 
+  235  ansible workers -a "find / -name node_joined.txt" -i hosts  -v 
+  236  ansible workers -a "find / -name node_joined.txt" -i hosts  -v -d
+  237  ansible workers -a "find / -name node_joined.txt" -i hosts  --become-user -v 
+  238  ansible workers -a "find / -name node_joined.txt" -i hosts  --become-user root -v 
+  239  ansible workers -a "find /root/ -name node_joined.txt" -i hosts  --become-user root -v 
+  240  ansible workers -a "find /root -name node_joined.txt" -i hosts  --become-user root -v 
+  241  ansible workers -a "find /root/ -name node_joined.txt" -i hosts  --become-user root -v -d
+  242  ansible workers -a "find /root/ -name node_joined.txt" -i hosts  --become-use -v -d
+  243  ansible workers -a "find /root/ -name node_joined.txt" -i hosts  --become-u
+  244  ansible workers -a "find /root/ -name node_joined.txt" -i hosts  --become
+  245  ansible workers -a "rm /root/node_joined.txt" -i hosts  --become
+  246  ansible-playbook -i hosts ~/kube-ansible/workers-cluster.yml -v
