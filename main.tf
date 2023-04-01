@@ -80,7 +80,7 @@ resource "aws_instance" "Kube_master" {
   }
   provisioner "remote-exec" {
     inline = [
-      "sudo hostnamectl set-hostname worker"
+      "sudo hostnamectl set-hostname k8master"
     ]
   }
   provisioner "local-exec" {
