@@ -23,8 +23,10 @@ resource "aws_key_pair" "demo" {
 
 }
 
-data "aws_subnet_ids" "selected" {
+resource "aws_subnet" "my_subnet" {
   vpc_id = resource.aws_default_vpc.defaultvpc.id
+  cidr_block        = cidrsubnet(aws_default_vpc.defaultvpc.cidr_block, 4, 7)
+  map_public_ip_on_launch = true
 }
 resource "aws_security_group" "demoaccess" {
   name   = "demoaccess"
@@ -56,7 +58,7 @@ resource "aws_instance" "Kube_master" {
   associate_public_ip_address = "true"
   vpc_security_group_ids      = [aws_security_group.demoaccess.id]
   key_name                    = aws_key_pair.demo.key_name
-   subnet_id     = element(tolist(data.aws_subnet_ids.selected.ids), 0)
+  subnet_id                   = aws_subnet.my_subnet.id
   tags = {
     Name = "Kube-master"
   }
@@ -67,7 +69,7 @@ resource "aws_instance" "Kube_master" {
     private_key = file(local.private_key_path)
     timeout     = "4m"
   }
-provisioner "local-exec" {
+  provisioner "local-exec" {
     command = "> myhosts"
   }
   provisioner "remote-exec" {
@@ -91,6 +93,9 @@ provisioner "local-exec" {
   provisioner "local-exec" {
     command = "echo ${self.public_ip} >> myhosts"
   }
+  provisioner "local-exec" {
+    command = "echo ${self.private_ip} >> private_myhosts"
+  }
 
 }
 
@@ -100,7 +105,7 @@ resource "aws_instance" "Worker" {
   associate_public_ip_address = "true"
   vpc_security_group_ids      = [aws_security_group.demoaccess.id]
   key_name                    = aws_key_pair.demo.key_name
-   subnet_id     = element(tolist(data.aws_subnet_ids.selected.ids), 0)
+  subnet_id                   = aws_instance.Kube_master.subnet_id
   tags = {
     Name = "Worker"
   }
@@ -111,7 +116,7 @@ resource "aws_instance" "Worker" {
     private_key = file(local.private_key_path)
     timeout     = "4m"
   }
-  
+
   provisioner "remote-exec" {
     inline = [
       "hostname"
@@ -135,6 +140,8 @@ resource "aws_instance" "Worker" {
   provisioner "local-exec" {
     command = "echo ${self.public_ip} >> myhosts"
   }
-
+  provisioner "local-exec" {
+    command = "echo ${self.public_ip} >> private_myhosts"
+  }
 }
 
