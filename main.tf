@@ -52,6 +52,23 @@ resource "aws_security_group" "demoaccess" {
   }
 }
 
+resource "aws_security_group_rule" "icmp_ingress" {
+  type              = "ingress"
+  from_port         = 6443
+  to_port           = 6443
+  protocol          = "tcp"
+  source_security_group_id = self.security_group_id
+  security_group_id = aws_security_group.demoaccess.id
+}
+resource "aws_security_group_rule" "icmp_ingress" {
+  type        = "ingress"
+  from_port   = 0
+  to_port     = 0
+  protocol    = "icmp"
+  source_security_group_id = self.security_group_id
+  security_group_id = aws_security_group.demoaccess.id
+}
+
 resource "aws_instance" "Kube_master" {
   ami                         = local.ami_id
   instance_type               = "t2.medium"
