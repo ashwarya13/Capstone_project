@@ -52,12 +52,12 @@ resource "aws_security_group" "demoaccess" {
   }
 }
 
-resource "aws_security_group_rule" "icmp_ingress" {
+resource "aws_security_group_rule" "node_re" {
   type              = "ingress"
   from_port         = 6443
   to_port           = 6443
   protocol          = "tcp"
-  source_security_group_id = self.security_group_id
+  source_security_group_id = aws_security_group.demoaccess.id
   security_group_id = aws_security_group.demoaccess.id
 }
 resource "aws_security_group_rule" "icmp_ingress" {
@@ -65,7 +65,7 @@ resource "aws_security_group_rule" "icmp_ingress" {
   from_port   = 0
   to_port     = 0
   protocol    = "icmp"
-  source_security_group_id = self.security_group_id
+  source_security_group_id = aws_security_group.demoaccess.id
   security_group_id = aws_security_group.demoaccess.id
 }
 
