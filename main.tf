@@ -9,6 +9,10 @@ provider "aws" {
   region = "us-east-1"
 }
 
+locals {
+  start = [30000] # from_ports
+  end   = [32767] # to_ports
+}
 
 resource "aws_default_vpc" "defaultvpc" {
   tags = {
@@ -50,8 +54,17 @@ resource "aws_security_group" "demoaccess" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
 
+dynamic "ingress" {
+    for_each = local.start
+    content {
+      from_port   = 30000
+      to_port     = 32767
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  }
+}
 resource "aws_security_group_rule" "node_re" {
   type              = "ingress"
   from_port         = 6443
