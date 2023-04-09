@@ -1,0 +1,15 @@
+---
+ - hosts: localhost
+   gather_facts: false
+   name: Create inverntory file 
+   gather_facts: false
+   vars:
+     myfile: /root/Capstone_project/private_myhosts
+     myFileLists: "{{ lookup('file', myfile).splitlines() }}"
+   tasks:
+     - debug: 
+         msg: "{{myFileLists}}"
+     - name: create inventory file from j2 template
+       template:
+         src: /root/kube-ansible/inventory.j2
+         dest: /root/kube-ansible/latestHosts 

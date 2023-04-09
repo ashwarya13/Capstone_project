@@ -1,0 +1,11 @@
+[masters]
+master ansible_host={{myFileLists[0]}} ansible_user=ubuntu
+
+[workers]
+worker1 ansible_host={{myFileLists[1]}} ansible_user=ubuntu
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
+
