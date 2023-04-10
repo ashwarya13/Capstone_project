@@ -244,3 +244,245 @@
   244  ansible workers -a "find /root/ -name node_joined.txt" -i hosts  --become
   245  ansible workers -a "rm /root/node_joined.txt" -i hosts  --become
   246  ansible-playbook -i hosts ~/kube-ansible/workers-cluster.yml -v
+    1  yum update 
+    2  apt update
+    3  sudo snap install terraform --classic
+    4  sudo apt install ansible
+    5  git clone https://github.com/digitalvarys/kube-ansible
+    6  git clone https://github.com/ashwarya13/Capstone_project
+    7  git clone https://github.com/shri-kanth/kubernetes-demo-backend.git
+    8  git clone https://github.com/shri-kanth/kubernetes-demo-frontend.git
+    9  ls
+   10  git clone https://github.com/shri-kanth/kuberenetes-demo-manifests.git
+   11  cd Capstone_project/
+   12  ls
+   13  less main.tf 
+   14  vi main.tf 
+   15  terraform init 
+   16  cp demo.pem ~/.ssh/id_rsa
+   17  terraform apply --auto-aaprove
+   18  terraform apply --auto-approve
+   19  vi main.tf 
+   20  terraform apply --auto-approve
+   21  aws configure
+   22  apt install awsclie
+   23  apt install awscli
+   24  aws configure
+   25  cd Capstone_project/
+   26  terraform apply --auto-approve
+   27  ls
+   28  cat private_myhosts 
+   29  cat myhosts 
+   30  vi main.tf 
+   31  terraform apply --auto-approve
+   32  ls
+   33  cat private_myhosts 
+   34  terraform apply --auto-approve
+   35  cat private_myhosts 
+   36  vi private_myhosts 
+   37  cd ..
+   38  ls
+   39  cd Capstone_project/
+   40  ls
+   41  cat createInventory.yml 
+   42  cp inventory.j2 /root/kube-ansible/
+   43  ansible-playbook createInventory.yml 
+   44  cd ../kube-ansible/
+   45  ls
+   46  cat latestHosts 
+   47  cp latestHosts hosts 
+   48  ls
+   49  cat ../Capstone_project/history.txt | grep -i depend
+   50  ansible-playbook -i hosts kube-dependencies.yml
+   51  chmod 400 ~/.ssh/id_rsa 
+   52  ansible-playbook -i hosts kube-dependencies.yml
+   53  ansible-playbook -i hosts master-cluster.yml 
+   54  ansible-playbook -i hosts workers-cluster.yml -v
+   55  ansible masters -i hosts -a "kubectl get no"
+   56  apt install maven
+   57  apt install ng
+   58  apt remove  ng-common
+   59  curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+   60  sudo apt-get install -y nodejs
+   61  sudo npm install npm@latest -g
+   62  sudo apt install npm 
+   63  sudo npm install -g @angular/cli
+   64  cd kubernetes-demo-frontend/
+   65  ls
+   66  ng build
+   67  apt upgrade nodejs
+   68  reboot
+   69  apt install openjdk
+   70  snap install openjdk
+   71  mvn
+   72  javac
+   73  java
+   74  java --version
+   75  apt-get install openjdk-8-jdk
+   76  javac
+   77  cd kubernetes-demo-backend/
+   78  ls
+   79  mvn clean
+   80  mvn package 
+   81  find . -name *.jar
+   82  ls
+   83  cd target/
+   84  ls
+   85  mvn verify
+   86  cd ..
+   87  mvn verify
+   88  cd ../
+   89  ls
+   90  cd kubernetes-demo-frontend/
+   91  ls
+   92  ng
+   93  apt install ng-common
+   94  ng build
+   95  cd kubernetes-demo-frontend/
+   96  ng
+   97  cd kubernetes-demo-frontend/
+   98  nf build
+   99  ng build
+  100  npm uninstall -g angular-cli
+  101  npm install -g @angular/cli@13.3.0
+  102  ng build
+  103  npm install --save-dev @angular-devkit/build-angular
+  104  echo $history 
+  105  echo $(history)
+  106  echo $(history) | jq
+  107  echo -e $(history)
+  108  history >> test
+  109  cat test
+  110  rm test
+  111  history >> Capstone_project/history.txt 
+    1  yum update 
+    2  apt update
+    3  sudo snap install terraform --classic
+    4  sudo apt install ansible
+    5  git clone https://github.com/digitalvarys/kube-ansible
+    6  git clone https://github.com/ashwarya13/Capstone_project
+    7  git clone https://github.com/shri-kanth/kubernetes-demo-backend.git
+    8  git clone https://github.com/shri-kanth/kubernetes-demo-frontend.git
+    9  ls
+   10  git clone https://github.com/shri-kanth/kuberenetes-demo-manifests.git
+   11  cd Capstone_project/
+   12  ls
+   13  less main.tf 
+   14  vi main.tf 
+   15  terraform init 
+   16  cp demo.pem ~/.ssh/id_rsa
+   17  terraform apply --auto-aaprove
+   18  terraform apply --auto-approve
+   19  vi main.tf 
+   20  terraform apply --auto-approve
+   21  aws configure
+   22  apt install awsclie
+   23  apt install awscli
+   24  aws configure
+   25  cd Capstone_project/
+   26  terraform apply --auto-approve
+   27  ls
+   28  cat private_myhosts 
+   29  cat myhosts 
+   30  vi main.tf 
+   31  terraform apply --auto-approve
+   32  ls
+   33  cat private_myhosts 
+   34  terraform apply --auto-approve
+   35  cat private_myhosts 
+   36  vi private_myhosts 
+   37  cd ..
+   38  ls
+   39  cd Capstone_project/
+   40  ls
+   41  cat createInventory.yml 
+   42  cp inventory.j2 /root/kube-ansible/
+   43  ansible-playbook createInventory.yml 
+   44  cd ../kube-ansible/
+   45  ls
+   46  cat latestHosts 
+   47  cp latestHosts hosts 
+   48  ls
+   49  cat ../Capstone_project/history.txt | grep -i depend
+   50  ansible-playbook -i hosts kube-dependencies.yml
+   51  chmod 400 ~/.ssh/id_rsa 
+   52  ansible-playbook -i hosts kube-dependencies.yml
+   53  ansible-playbook -i hosts master-cluster.yml 
+   54  ansible-playbook -i hosts workers-cluster.yml -v
+   55  ansible masters -i hosts -a "kubectl get no"
+   56  apt install maven
+   57  apt install ng
+   58  apt remove  ng-common
+   59  curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+   60  sudo apt-get install -y nodejs
+   61  sudo npm install npm@latest -g
+   62  sudo apt install npm 
+   63  sudo npm install -g @angular/cli
+   64  cd kubernetes-demo-frontend/
+   65  ls
+   66  ng build
+   67  apt upgrade nodejs
+   68  reboot
+   69  apt install openjdk
+   70  snap install openjdk
+   71  mvn
+   72  javac
+   73  java
+   74  java --version
+   75  apt-get install openjdk-8-jdk
+   76  javac
+   77  cd kubernetes-demo-backend/
+   78  ls
+   79  mvn clean
+   80  mvn package 
+   81  find . -name *.jar
+   82  ls
+   83  cd target/
+   84  ls
+   85  mvn verify
+   86  cd ..
+   87  mvn verify
+   88  cd ../
+   89  ls
+   90  cd kubernetes-demo-frontend/
+   91  ls
+   92  ng
+   93  apt install ng-common
+   94  ng build
+   95  cd kubernetes-demo-frontend/
+   96  ng
+   97  cd kubernetes-demo-frontend/
+   98  nf build
+   99  ng build
+  100  npm uninstall -g angular-cli
+  101  npm install -g @angular/cli@13.3.0
+  102  ng build
+  103  npm install --save-dev @angular-devkit/build-angular
+  104  echo $history 
+  105  echo $(history)
+  106  echo $(history) | jq
+  107  echo -e $(history)
+  108  history >> test
+  109  cat test
+  110  rm test
+  111  history >> Capstone_project/history.txt 
+  112  cd kubernetes-demo-frontend/
+  113  ls
+  114  ng build
+  115  ng v
+  116  ls
+  117  cat Dockerfile 
+  118  ls
+  119  cat package.json 
+  120  ng build --aot --prod"
+  121  ng build --aot --prod
+  122  ls
+  123  ls -ltr
+  124  cat '#build#' 
+  125  rm '#build#' 
+  126  ng build --configuration production 
+  127  docker build .
+  128  exit
+  129  cd Capstone_project/
+  130  ls
+  131  history >> history.txt 

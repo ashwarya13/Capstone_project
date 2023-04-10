@@ -3,16 +3,13 @@ locals {
   vpc_id           = aws_default_vpc.defaultvpc.id
   ssh_user         = "ubuntu"
   private_key_path = "${path.cwd}/demo.pem"
+  start            = [3000]
 }
 
 provider "aws" {
   region = "us-east-1"
 }
 
-locals {
-  start = [30000] # from_ports
-  end   = [32767] # to_ports
-}
 
 resource "aws_default_vpc" "defaultvpc" {
   tags = {
@@ -100,7 +97,7 @@ resource "aws_instance" "Kube_master" {
     timeout     = "4m"
   }
   provisioner "local-exec" {
-    command = "> myhosts"
+    command = "> myhosts && > private_myhosts"
   }
   provisioner "remote-exec" {
     inline = [
@@ -171,7 +168,7 @@ resource "aws_instance" "Worker" {
     command = "echo ${self.public_ip} >> myhosts"
   }
   provisioner "local-exec" {
-    command = "echo ${self.public_ip} >> private_myhosts"
+    command = "echo ${self.private_ip} >> private_myhosts"
   }
 }
 
