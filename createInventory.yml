@@ -11,5 +11,5 @@
          msg: "{{myFileLists}}"
      - name: create inventory file from j2 template
        template:
-         src: /root/kube-ansible/inventory.j2
-         dest: /root/kube-ansible/latestHosts 
+         src: inventory.j2
+         dest: /root/kube-ansible/hosts
