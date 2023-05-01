@@ -64,8 +64,8 @@ dynamic "ingress" {
 }
 resource "aws_security_group_rule" "node_re" {
   type              = "ingress"
-  from_port         = 6443
-  to_port           = 6443
+  from_port         = 0
+  to_port           = 65535
   protocol          = "tcp"
   source_security_group_id = aws_security_group.demoaccess.id
   security_group_id = aws_security_group.demoaccess.id
