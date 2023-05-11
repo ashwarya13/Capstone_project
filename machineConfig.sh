@@ -1,5 +1,4 @@
 #!/bin/sh
-sudo su -
 apt update -y
 snap install terraform --classic
 apt -y install ansible
