@@ -1,4 +1,6 @@
 #!/bin/sh
+git clone https://github.com/ashwarya13/Capstone_project.git
+git clone https://github.com/ashwarya13/kube-ansible.git
 cd Capstone_project
 cp demo.pem ~/.ssh/id_rsa
 chmod 400 ~/.ssh/id_rsa
