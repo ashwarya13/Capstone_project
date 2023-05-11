@@ -12,8 +12,8 @@ pwd
 ansible-playbook -i hosts kube-dependencies.yml
 ansible-playbook -i hosts master-cluster.yml
 ansible-playbook -i hosts workers-cluster.yml
-ansible masters -i hosts -a "sudo snap install helm --classic"
-ansible masters -i hosts -a "helm install ingress-nginx ingress-nginx/ingress-nginx"
-ansible masters -i hosts -a "kubectl patch svc ingress-nginx-controller -p '{\"spec\": {\"type\": \"LoadBalancer\", \"externalIPs\":[\"174.129.119.133\"]}}'"
+#ansible masters -i hosts -a "sudo snap install helm --classic"
+#ansible masters -i hosts -a "helm install ingress-nginx ingress-nginx/ingress-nginx"
+#ansible masters -i hosts -a "kubectl patch svc ingress-nginx-controller -p '{\"spec\": {\"type\": \"LoadBalancer\", \"externalIPs\":[\"174.129.119.133\"]}}'"
 ansible-playbook -i hosts app.yaml
 ansible masters -i hosts -a "kubectl get all -o wide"
